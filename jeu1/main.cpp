@@ -14,17 +14,17 @@
 using namespace std;
 
 
-int random_trouve_internet(int borne_m, int borne_p)
+int randomTrouveInternet(int borneBasse, int borneHaute)
 {
     random_device rd;  // Will be used to obtain a seed for the random number engine
     mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
-    uniform_int_distribution<> distrib(borne_m, borne_p);
+    uniform_int_distribution<> distrib(borneBasse, borneHaute);
 
     return int(distrib(gen));
 }
 
 
-int inserer_nombre(const char* phrase)
+int insererNombre(const char* phrase)
 {
     int nombre;
 
@@ -55,24 +55,24 @@ int main(void)
      *  Date de dernière modification : 8 septembre 2021
      *  Auteur : T. Planche / M. Hériveau
      *  Remarques : 
-     *  @param borne_basse entier demandé à l'utilisateur définissant la borne basse de la recherche
-     *  @param borne_haute entier demandé à l'utilisateur définissant la borne haute de la recherche
-     *  @param choix_tentatives entier demandé à l'utilisateur définissant le nombre de tentatives qu'il souhaite avoir
-     *  @param nb_de_tentatives entier qui sera incrémentéà chaques tentatives
+     *  @param borneBasse entier demandé à l'utilisateur définissant la borne basse de la recherche
+     *  @param borneHaute entier demandé à l'utilisateur définissant la borne haute de la recherche
+     *  @param choixTentatives entier demandé à l'utilisateur définissant le nombre de tentatives qu'il souhaite avoir
+     *  @param nbDeTentatives entier qui sera incrémentéà chaques tentatives
      *  @param tentative entier qui prendra la valeur entrée par l'utilisateur à chaques boucle
      *  @param nb_a_deviner entier qui sera aléatoirement généré entre les bornes choisies
     **/
 
     // INITIALISATION
-    int borne_basse;
-    int borne_haute;
-    int choix_tentatives;
-    int nb_de_tentatives = 0;
+    int borneBasse;
+    int borneHaute;
+    int choixTentatives;
+    int nbDeTentatives = 0;
     int tentative;
     int nb_a_deviner;
     ostringstream phrase;
-    string phrase_string;
-    const char* phrase_char;
+    string phraseString;
+    const char* phraseChar;
 
     // TRAITEMENT
 
@@ -81,43 +81,43 @@ int main(void)
     cout << "Le joueur doit essayer de deviner le nombre généré aléatoirement entre les bornes saisies.\n" << endl;
 
     // Demande à l'utilisateur la saisie de la borne basse.
-    borne_basse = inserer_nombre("Saisissez la borne basse : ");
+    borneBasse = insererNombre("Saisissez la borne basse : ");
 
     // Idem pour la borne haute.
-    borne_haute = inserer_nombre("Saisissez la borne haute : ");
+    borneHaute = insererNombre("Saisissez la borne haute : ");
 
     // Si la borne basse est plus grande que la borne haute
-    while (borne_basse == borne_haute || borne_basse > borne_haute) {
+    while (borneBasse == borneHaute || borneBasse > borneHaute) {
 
         cout << "Veuillez entrer des valeurs valides (bornes différentes ou borne basse < borne haute)" << endl;
 
-        borne_basse = inserer_nombre("Saisissez la borne basse : ");
+        borneBasse = insererNombre("Saisissez la borne basse : ");
 
-        borne_basse = inserer_nombre("Saisissez la borne basse : ");
+        borneBasse = insererNombre("Saisissez la borne basse : ");
     }
 
-    nb_a_deviner = random_trouve_internet(borne_basse, borne_haute);
+    nb_a_deviner = randomTrouveInternet(borneBasse, borneHaute);
 
 
-    tentative = borne_basse - 1;
+    tentative = borneBasse - 1;
 
-    choix_tentatives = inserer_nombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
+    choixTentatives = insererNombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
 
-    // Ici, je convertis la phrase avec les variables des bornes en char, afin de le passer en argument dans ma fonction "inserer_nombre".
-    phrase << "\nSaisissez un nombre entre " << borne_basse << " et " << borne_haute << ". Tentative n° " << nb_de_tentatives << "/" << choix_tentatives << " : ";
-    phrase_string = phrase.str();
-    phrase_char = phrase_string.c_str();
+    // Ici, je convertis la phrase avec les variables des bornes en char, afin de le passer en argument dans ma fonction "insererNombre".
+    phrase << "\nSaisissez un nombre entre " << borneBasse << " et " << borneHaute << ". Tentative n° " << nbDeTentatives << "/" << choixTentatives << " : ";
+    phraseString = phrase.str();
+    phraseChar = phraseString.c_str();
 
 
 
 
     while (tentative != nb_a_deviner)
     {
-        nb_de_tentatives++;
+        nbDeTentatives++;
 
-        tentative = inserer_nombre(phrase_char);
+        tentative = insererNombre(phraseChar);
 
-        if (nb_de_tentatives == choix_tentatives)
+        if (nbDeTentatives == choixTentatives)
         {
             cout << "\nPerdu :( le nombre était " << nb_a_deviner << "." << endl;
             return 0;
@@ -131,7 +131,7 @@ int main(void)
 
     }
 
-    cout << "\n GAGNÉ ! il vous a fallu " << nb_de_tentatives << " tentatives." << endl;
+    cout << "\n GAGNÉ ! il vous a fallu " << nbDeTentatives << " tentatives." << endl;
 
     
     return 0;
