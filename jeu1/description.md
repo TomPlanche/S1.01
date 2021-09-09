@@ -11,7 +11,7 @@ Travail réalisé en S1, nous faisons tous les deux parti du TD2 et du TP4.
 
 Règles | Choix Utilisateur
 -------|------------------
-Le joueur est ammené à choisir deux nombres entre deux bornes qu'il aura choisi.| Tous les choix utilisateurs seront des entiers.<br> $\Rightarrow \forall x \in \mathbb{N}$
+Le joueur est ammené à choisir deux nombres entre deux bornes qu'il aura choisi.| Tous les choix utilisateurs seront des entiers.<br> $\Rightarrow \forall (\text{borneBasse},  \text{borneHaute}, \text{choixTentatives}, \text{tentative}) \in \mathbb{N^4}$
 
 Here's a sentence with a footnote. [^1]
 
