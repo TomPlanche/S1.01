@@ -70,6 +70,9 @@ int main(void)
     int nb_de_tentatives = 0;
     int tentative;
     int nb_a_deviner;
+    ostringstream phrase;
+    string phrase_string;
+    const char* phrase_char;
 
     // TRAITEMENT
 
@@ -100,12 +103,19 @@ int main(void)
 
     choix_tentatives = inserer_nombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
 
+    // Ici, je convertis la phrase avec les variables des bornes en char, afin de le passer en argument dans ma fonction "inserer_nombre".
+    phrase << "\nSaisissez un nombre entre " << borne_basse << " et " << borne_haute << ". Tentative n° " << nb_de_tentatives << "/" << choix_tentatives << " : ";
+    phrase_string = phrase.str();
+    phrase_char = phrase_string.c_str();
+
+
+
+
     while (tentative != nb_a_deviner)
     {
         nb_de_tentatives++;
-        cout << "\nSaisissez un nombre entre " << borne_basse << " et " << borne_haute << ". Tentative n° " << nb_de_tentatives << "/" << choix_tentatives << " : ";
-        
-        cin >> tentative;
+
+        tentative = inserer_nombre(phrase_char);
 
         if (nb_de_tentatives == choix_tentatives)
         {
