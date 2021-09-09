@@ -7,9 +7,12 @@
 
 #include <iostream>
 #include <random>
+#include <sstream>
+#include <limits>
 
 
 using namespace std;
+
 
 int random_trouve_internet(int borne_m, int borne_p) {
     random_device rd;  // Will be used to obtain a seed for the random number engine
@@ -18,6 +21,29 @@ int random_trouve_internet(int borne_m, int borne_p) {
 
     return int(distrib(gen));
 }
+
+
+int inserer_nombre(const char* phrase)
+{
+    int nombre;
+
+    while (true) {
+        cout << phrase;
+        cin >> nombre;
+
+        if (cin.fail()) // no extraction took place
+        {
+            cin.clear(); // reset the state bits back to goodbit so we can use ignore()
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear out the bad input from the stream
+            continue; // try again
+        }
+
+        break;
+    }
+
+    return nombre;
+}
+
 
 int main(void) {
     /**
@@ -49,31 +75,26 @@ int main(void) {
     cout << "Le joueur doit essayer de deviner le nombre généré aléatoirement entre les bornes saisies.\n" << endl;
 
     // Demande à l'utilisateur la saisie de la borne basse.
-    cout << "Saisissez la borne basse : ";
-    cin >> borne_basse;
+    borne_basse = inserer_nombre("Saisissez la borne basse : ");
 
     // Idem pour la borne haute.
-    cout << "Saisissez la borne haute : ";
-    cin >> borne_haute;
+    borne_haute = inserer_nombre("Saisissez la borne haute : ");
 
     // Si la borne basse est plus grande que la borne haute
     while (borne_basse == borne_haute || borne_basse > borne_haute) {
 
         cout << "Veuillez entrer des valeurs valides (bornes différentes ou borne basse < borne haute)" << endl;
 
-        cout << "Saisissez la borne basse : ";
-        cin >> borne_basse;
+        borne_basse = inserer_nombre("Saisissez la borne basse : ");
 
-        cout << "Saisissez la borne haute : ";
-        cin >> borne_haute;
+        borne_basse = inserer_nombre("Saisissez la borne basse : ");
     }
 
     nb_a_deviner = random_trouve_internet(borne_basse, borne_haute);
 
     tentative = borne_basse - 1;
 
-    cout << "\nCombien de vies voulez vous avoir (minimum 1) ? : ";
-    cin >> choix_tentatives;
+    choix_tentatives = inserer_nombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
 
     while (tentative != nb_a_deviner) {
         nb_de_tentatives++;
