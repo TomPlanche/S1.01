@@ -14,7 +14,8 @@
 using namespace std;
 
 
-int random_trouve_internet(int borne_m, int borne_p) {
+int random_trouve_internet(int borne_m, int borne_p)
+{
     random_device rd;  // Will be used to obtain a seed for the random number engine
     mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
     uniform_int_distribution<> distrib(borne_m, borne_p);
@@ -27,7 +28,8 @@ int inserer_nombre(const char* phrase)
 {
     int nombre;
 
-    while (true) {
+    while (true)
+    {
         cout << phrase;
         cin >> nombre;
 
@@ -45,7 +47,8 @@ int inserer_nombre(const char* phrase)
 }
 
 
-int main(void) {
+int main(void)
+{
     /**
      *  Programme : main
      *  But :  L'utilisateur doit trouver un nombre à partir des aides énoncées
@@ -92,22 +95,27 @@ int main(void) {
 
     nb_a_deviner = random_trouve_internet(borne_basse, borne_haute);
 
+
     tentative = borne_basse - 1;
 
     choix_tentatives = inserer_nombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
 
-    while (tentative != nb_a_deviner) {
+    while (tentative != nb_a_deviner)
+    {
         nb_de_tentatives++;
         cout << "\nSaisissez un nombre entre " << borne_basse << " et " << borne_haute << ". Tentative n° " << nb_de_tentatives << "/" << choix_tentatives << " : ";
         
         cin >> tentative;
 
-        if (nb_de_tentatives == choix_tentatives) {
+        if (nb_de_tentatives == choix_tentatives)
+        {
             cout << "\nPerdu :( le nombre était " << nb_a_deviner << "." << endl;
             return 0;
-        } else if (tentative < nb_a_deviner) {
+        } else if (tentative < nb_a_deviner)
+        {
             cout << "Nombre trop petit !" << endl;
-        } else {
+        } else
+        {
             cout << "Nombre trop grand !" << endl;
         }
 
