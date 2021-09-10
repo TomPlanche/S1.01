@@ -1,3 +1,7 @@
+
+<p align="center">
+    <img width="200" src="https://www.iutbayonne.univ-pau.fr/sites/all/themes/iutbay/logo-black.png" alt="Logo IUT" link="https://www.iutbayonne.univ-pau.fr">
+</p>
 <p align="center">
     <img width = 900px src="https://github.com/TomPlanche/S1.01/blob/main/vignette.jpeg" alt= "Logo SAE" link="https://www.iutbayonne.univ-pau.fr">
 </p>
