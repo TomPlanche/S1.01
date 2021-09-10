@@ -5,7 +5,7 @@
 <h1 align="center">SA1.01 - IMPLEMENTATION D’UN BESOIN CLIENT</h1>
 
 <hr>
-<h2 align="center">Jeux<h2>
+<h2 align="center">Jeux Du Pack 13<h2>
 
 <div align="center">
 
