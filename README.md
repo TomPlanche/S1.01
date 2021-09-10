@@ -16,15 +16,10 @@
   - ##### Pour ce jeu, nous avions du 6 septembre 2021 jusqu'au 3 octobre 2021 pour le développer.
 - Le deuxième jeu, le [jeu du devine nombre](https://github.com/TomPlanche/S1.01/tree/main/devine%20nombre).
   - ##### Pour ce jeu, nous avions du 6 septembre 2021 jusqu'au 17 octobre 2021 pour le développer.
-<br>
-
 <hr>
-
 #### Pour chacun des jeux, nous devions les livrer avec :
 - Une description générale du jeu et de ses règles.
 - Les spécifications externes du jeu.
 - Les éventuelles ressources à votre disposition pour vous aider à concevoir / programmer le jeu.
 - Les extensions envisageables pour étendre le jeu si vous avez envie.
-
 <hr>
-
