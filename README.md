@@ -14,6 +14,8 @@
 ##### Pour ce jeu, nous avions du 6 septembre 2021 jusqu'au 17 octobre 2021 pour le développer.
 <br>
 
+<hr>
+
 #### Pour chacun des jeux, nous devions les livrer avec :
 - Une description générale du jeu et de ses règles.
 - Les spécifications externes du jeu.
