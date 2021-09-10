@@ -2,7 +2,6 @@
     <img width = 900px src="https://github.com/TomPlanche/S1.01/blob/main/vignette.jpeg">
 </p>
 
-<h1 align="center">SA1.01 - IMPLEMENTATION D’UN BESOIN CLIENT</h1>
 
 <hr>
 
