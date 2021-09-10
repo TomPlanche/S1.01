@@ -31,7 +31,7 @@ int randomTrouveInternet(int borneBasse, int borneHaute)
     mt19937 gen(rd());
     uniform_int_distribution<> distrib(borneBasse, borneHaute);
 
-    if ((int(distrib(gen))) == 0) {
+    if ((int(distrib(gen))) == 0) { // La variable tentative étant initiée à 0, cela évite que le programme dise que le joueur à gagné sans même jouer.
         return randomTrouveInternet(borneBasse, borneHaute);
     }
     return int(distrib(gen));
