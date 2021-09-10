@@ -3,7 +3,7 @@
 </p>
 
 
-<hr>
+
 
 <div align="center">
 
@@ -16,4 +16,4 @@
 
 </div>
 
-<hr>
+
