@@ -148,7 +148,7 @@ int main(void)
         } else if (tentative < nb_a_deviner) // Si la tentative est trop petite
         {
             cout << "Nombre trop petit !" << endl;
-        } else // Si la tentative est trop grande
+        } else if (tentative > nb_a_deviner)// Si la tentative est trop grande
         {
             cout << "Nombre trop grand !" << endl;
         }

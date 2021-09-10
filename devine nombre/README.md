@@ -8,7 +8,7 @@
 <h2 align="center">Jeu Du Deviner un nombre </h2>
 
 <p>
-    <img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" alt="Made With C++ IUT" link="https://www.iutbayonne.univ-pau.fr">
+    <img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" alt="Made With C++ Logo" link="https://en.wikipedia.org/wiki/C%2B%2B">
 </p>
 
 ## Description générale
@@ -17,7 +17,7 @@ Je jeu consciste à deviner un nombre entre deux intervales qui seront choisies 
 
 ## Règles
 
-Toutes les entrées faites par le joueur doivent être des entier.s Une valeur non correcte sera redemandée.
+Toutes les entrées faites par le joueur doivent être des entiers si une valeur non correcte est entrée, elle sera redemandée.
 
 <hr>
 

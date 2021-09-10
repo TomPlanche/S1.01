@@ -14,6 +14,8 @@ int main(void) {
         Remarques : pas commencé
     */
 
+    // TODO : Commencer l'algo 
+
     // INITIALISATION
     return 0;
 }
