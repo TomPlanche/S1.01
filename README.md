@@ -6,6 +6,11 @@
 
 <hr>
 <h2 align="center">Jeux<h2>
+
+<div align="center">
+
+* <p><a src = "https://github.com/TomPlanche/S1.01/tree/main/devine%20nombre">Jeu Du Devine Nombre</p>
+* <p><a src = "https://github.com/TomPlanche/S1.01/tree/main/jeu%20du%20simon">Jeu Du Simon</p>
+</div>
+
 <hr>
-
-
