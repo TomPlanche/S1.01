@@ -10,8 +10,9 @@
 
 <div align="center">
 
-* <p><a src = "https://github.com/TomPlanche/S1.01/tree/main/devine%20nombre">Jeu Du Devine Nombre</p>
-* <p><a src = "https://github.com/TomPlanche/S1.01/tree/main/jeu%20du%20simon">Jeu Du Simon</p>
+* [Jeu Du Simon](https://github.com/TomPlanche/S1.01/tree/main/jeu%20du%20simon)
+* [Jeu Du Devine Nombre](https://github.com/TomPlanche/S1.01/tree/main/devine%20nombre)
+
 </div>
 
 <hr>
