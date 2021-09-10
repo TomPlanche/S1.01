@@ -1,3 +1,4 @@
+
 <p align="center">
     <img width="200" src="https://www.iutbayonne.univ-pau.fr/sites/all/themes/iutbay/logo-black.png" alt="Logo IUT" link="https://www.iutbayonne.univ-pau.fr">
 </p>
@@ -5,15 +6,8 @@
 <h1 align="center">Jeu Du Devine Nombre</h1>
 
 <p>
-    <img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" alt="Logo IUT" link="https://www.iutbayonne.univ-pau.fr">
-    <img src="http://forthebadge.com/images/badges/built-with-love.svg" alt="Logo IUT" link="https://www.iutbayonne.univ-pau.fr">
+    <img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" alt="Made With C++ IUT" link="https://www.iutbayonne.univ-pau.fr">
 </p>
 
 
-Crée le 9 septembre 2021 par @TomPlanche et @Relaxboum (Mathis Hériveau).
-Travail réalisé en S1, nous faisons tous les deux parti du TD2 et du TP4.
-
-
-Règles | Choix Utilisateur
--------|------------------
-Le joueur est ammené à choisir deux nombres entre deux bornes qu'il aura choisi.| Tous les choix utilisateurs seront des entiers.
+Fait par [@MathisHeriveau](https://github.com/Relaxboum) et [@TomPlanche](https://github.com/TomPlanche), étudiants à l'[l'IUT de Bayonne](https://www.iutbayonne.univ-pau.fr) dans le cardre de la S1.01.
