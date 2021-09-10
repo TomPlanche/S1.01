@@ -4,17 +4,16 @@
 
 <h1 align="center">Jeu Du Devine Nombre</h1>
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](http://forthebadge.com)
+<p>
+    <img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" alt="Logo IUT" link="https://www.iutbayonne.univ-pau.fr">
+    <img src="http://forthebadge.com/images/badges/built-with-love.svg" alt="Logo IUT" link="https://www.iutbayonne.univ-pau.fr">
+</p>
+
 
 Crée le 9 septembre 2021 par @TomPlanche et @Relaxboum (Mathis Hériveau).
 Travail réalisé en S1, nous faisons tous les deux parti du TD2 et du TP4.
 
 
-
 Règles | Choix Utilisateur
 -------|------------------
 Le joueur est ammené à choisir deux nombres entre deux bornes qu'il aura choisi.| Tous les choix utilisateurs seront des entiers.
-
-Here's a sentence with a footnote. [^1]
-
-[^1]: This is the footnote.
