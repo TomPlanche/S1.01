@@ -3,8 +3,8 @@
     <img width="200" src="https://www.iutbayonne.univ-pau.fr/sites/all/themes/iutbay/logo-black.png" alt="Logo IUT" link="https://www.iutbayonne.univ-pau.fr">
 </p>
 
-<h1 align="center">SA1.01 - IMPLEMENTATION D’UN BESOIN</h1>
-<h2 align="center">« Le jeu du Simon »</h2>
+
+<h1 align="center">Le jeu du Simon</h1>
 
 
 <p>
