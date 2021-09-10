@@ -12,9 +12,9 @@
 
 #### Dans le cacre d'une SAÉ (Situation d'apprentissage et d'évaluation) à l'[IUT de Bayonne](https://www.iutbayonne.univ-pau.fr), [@MathisHeriveau](https://github.com/Relaxboum) et moi ([@TomPlanche](https://github.com/TomPlanche)) devions créer deux jeux.
 
-- Le premier jeu, le [jeu du Simon](https://github.com/TomPlanche/S1.01/tree/main/jeu%20du%20simon).<br>
+- Le premier, le [jeu du Simon](https://github.com/TomPlanche/S1.01/tree/main/jeu%20du%20simon).<br>
   - ##### Pour ce jeu, nous avions du 6 septembre 2021 jusqu'au 3 octobre 2021 pour le développer.
-- Le deuxième jeu, le [jeu du devine nombre](https://github.com/TomPlanche/S1.01/tree/main/devine%20nombre).
+- Le deuxième, le [jeu du devine nombre](https://github.com/TomPlanche/S1.01/tree/main/devine%20nombre).
   - ##### Pour ce jeu, nous avions du 6 septembre 2021 jusqu'au 17 octobre 2021 pour le développer.
 <hr>
 
