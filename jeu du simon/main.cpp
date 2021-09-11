@@ -13,8 +13,9 @@ int main(void) {
         Auteur : T. Planche
         Remarques : pas commencé
     */
+    char choixUtilisateur;
 
-    // TODO : Commencer l'algo 
+    // TODO : Commencer l'algo
 
     // INITIALISATION
     return 0;
