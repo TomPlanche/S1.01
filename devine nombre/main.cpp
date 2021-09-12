@@ -97,7 +97,6 @@ int main(void)
     string phraseString;
     const char* phraseChar;
 
-    // TRAITEMENT
 
 
     // Affichage du nom et des règles.
@@ -124,6 +123,8 @@ int main(void)
 
     // Demande à l'utilisateur le nombre de tentatives qu'il souhaite avoir
     choixTentatives = insererNombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
+
+    // TRAITEMENT - DÉBUT DU JEU
 
     // Boucle qui tourne tant que la tentative de l'utilisateur n'est pas la bonne
     while (tentative != nb_a_deviner)
