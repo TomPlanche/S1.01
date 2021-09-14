@@ -27,7 +27,7 @@ int randomTrouveInternet(int borneBasse, int borneHaute)
       * @param borneHaute entier définissant la borne haute de génération
       **/
 
-    random_device rd; 
+    std::random_device rd; 
     mt19937 gen(rd());
     uniform_int_distribution<> distrib(borneBasse, borneHaute);
 

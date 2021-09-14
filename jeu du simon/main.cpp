@@ -12,9 +12,6 @@
 using namespace std;
 
 
-
-
-
 int randomTrouveInternet(int borneBasse, int borneHaute)
 {
     /**
@@ -27,9 +24,9 @@ int randomTrouveInternet(int borneBasse, int borneHaute)
       * @param borneHaute entier définissant la borne haute de génération
       **/
 
-    random_device rd; 
-    mt19937 gen(rd());
-    uniform_int_distribution<> distrib(borneBasse, borneHaute);
+    std::random_device rd; 
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(borneBasse, borneHaute);
 
     if ((int(distrib(gen))) == 0) { // La variable tentative étant initiée à 0, cela évite que le programme dise que le joueur à gagné sans même jouer.
         return randomTrouveInternet(borneBasse, borneHaute);
@@ -53,18 +50,23 @@ int main(void) {
     // ! : Trouver fonction sleep.
 
 
-    cout << choixDisponibles[2] << endl;
-    cout << choixDisponibles.find('p') << endl;
+    std::cout << choixDisponibles[2] << endl;
+    std::cout << choixDisponibles.find('p') << endl;
 
-    cin >> choixUtilisateur;
+    std::cin >> choixUtilisateur;
 
-    cout << (string("pfc").find(choixUtilisateur) != 0) << endl;
+    std::cout << (string("pfc").find(choixUtilisateur) != 0) << endl;
+
+	std::cout << "test" << endl;
 
     system("clear");
 
 
+	usleep(2000000);
+    cout << "caca ";
 
-    
+	usleep(2000000);
+    cout << " pipi" << endl;
     
 
 
