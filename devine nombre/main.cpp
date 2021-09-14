@@ -98,7 +98,6 @@ int main(void)
     const char* phraseChar;
 
 
-
     // Affichage du nom et des règles.
     cout << "----- DEVINE NOMBRE -----" << endl;
     cout << "Le joueur doit essayer de deviner le nombre généré aléatoirement entre les bornes saisies.\n" << endl;

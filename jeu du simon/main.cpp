@@ -47,6 +47,7 @@ int main(void) {
     */
     char choixUtilisateur;
     string choixDisponibles = "pfc";
+    int milliSecondes = 1000;
 
     // TODO : Commencer l'algo
     // ! : Trouver fonction sleep.
@@ -63,16 +64,8 @@ int main(void) {
 
 
 
-    cout << "ça marche ?! ";
-
-    sleep(2);
-
-    cout << "oui " << endl;
-
     
-
-
-    cout << "YESSSSS";
+    
 
 
 
