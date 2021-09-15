@@ -44,7 +44,7 @@ int main(void) {
         Remarques : pas commencé
     */
     char choixUtilisateur;
-    std::string choixDisponibles = "pfc";
+    std::string choixDisponibles = "vbrj";
     int milliSecondes = 1000;
 
     // TODO : Commencer l'algo
@@ -52,7 +52,7 @@ int main(void) {
 
 
     std::cout << choixDisponibles[2] << std::endl;
-    std::cout << choixDisponibles.find('p') << std::endl;
+    std::cout << choixDisponibles.find('v') << std::endl;
 
     std::cin >> choixUtilisateur;
 
