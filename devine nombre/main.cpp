@@ -82,6 +82,9 @@ int main(void)
      *  @param nbDeTentatives entier qui sera incrémentéà chaques tentatives
      *  @param tentative entier qui prendra la valeur entrée par l'utilisateur à chaques boucle
      *  @param nb_a_deviner entier qui sera aléatoirement généré entre les bornes choisies
+     *  @param phrase ostringstream qui sert a passer d'un ostringstream généré à chaques boucles à un const char* pour notre fonction insererNombre
+     *  @param phraseString string qui sert a passer d'un string généré à chaques boucles à un const char* pour notre fonction insererNombre
+     *  @param phraseChar const char* qui sera passé dans notre fonction insererNombre
     **/
 
     // INITIALISATION
