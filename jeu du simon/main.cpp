@@ -5,6 +5,18 @@
   * @date 10 septembre 2021
   **/
 
+#include <iostream>
+#include <random>
+
+#ifdef __APPLE__
+#include <unistd.h>
+#endif
+
+#ifdef _WIN32
+#include <cstdlib>
+#endif
+
+
 namespace OS
 {
     void clear() {
@@ -15,11 +27,6 @@ namespace OS
         #endif
     }
 }
-
-#include <iostream>
-#include <random>
-#include <unistd.h>
-#include <cstdlib>
 
 
 int randomTrouveInternet(int borneBasse, int borneHaute)
