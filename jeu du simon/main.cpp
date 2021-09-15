@@ -41,12 +41,16 @@ int main(void) {
         Auteur : T. Planche
         Remarques : pas commencé
     */
+
+
+   //INITIALISATION
     char choixUtilisateur;
-    std::string choixDisponibles = "vbrj";
+    int tentative=1;
+
+    /*std::string choixDisponibles = "vbrj";
     //int milliSecondes = 1000;
 
     // TODO : Commencer l'algo
-    // ! : Trouver fonction sleep.
 
 
     std::cout << choixDisponibles[2] << std::endl;
@@ -56,18 +60,23 @@ int main(void) {
 
     std::cout << (std::string("pfc").find(choixUtilisateur) != 0) << std::endl;
 
-	std::cout << "test" << std::endl;
+	std::cout << "test" << std::endl;*/
 
+std::cout << "** Jeu du Simon **" << std::endl;
+
+ while(tentative=!0){
+    tentative++;
+    std::cout << "[v -> vert, r -> rouge, b -> bleu, j -> jaune]" << std::endl;
+    usleep(3000000);
     system("cls");
-
-
+    std::cout << "** Jeu du Simon **" << std::endl;
     usleep(1000000);
 	std::cout << "3... ";
     usleep(1000000);
     std::cout << "2... ";
     usleep(1000000);
     std::cout << "1... " << std::endl;
-
+}
 
 
     // INITIALISATION
