@@ -11,7 +11,6 @@
 #include <sstream>
 #include <limits>
 
-// Test Tom Mathis Oeoeooe
 
 int randomTrouveInternet(int borneBasse, int borneHaute)
 {
