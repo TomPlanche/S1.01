@@ -10,8 +10,6 @@
 #include <unistd.h>
 
 
-
-
 int randomTrouveInternet(int borneBasse, int borneHaute)
 {
     /**
@@ -45,7 +43,7 @@ int main(void) {
     */
     char choixUtilisateur;
     std::string choixDisponibles = "vbrj";
-    int milliSecondes = 1000;
+    //int milliSecondes = 1000;
 
     // TODO : Commencer l'algo
     // ! : Trouver fonction sleep.
@@ -60,14 +58,14 @@ int main(void) {
 
 	std::cout << "test" << std::endl;
 
-    system("clear");
+    system("cls");
 
 
-    usleep(2000000);
+    usleep(1000000);
 	std::cout << "3... ";
-    usleep(2000000);
+    usleep(1000000);
     std::cout << "2... ";
-    usleep(2000000);
+    usleep(1000000);
     std::cout << "1... " << std::endl;
 
 
