@@ -5,6 +5,17 @@
   * @date 10 septembre 2021
   **/
 
+namespace OS
+{
+  void clear() {
+#ifdef _WIN32
+    system("cls");
+#elif __APPLE__
+    system("clear");
+#endif
+  }
+}
+
 #include <iostream>
 #include <random>
 #include <unistd.h>
@@ -45,7 +56,7 @@ int main(void) {
 
    //INITIALISATION
     char choixUtilisateur;
-    int tentative=1;
+    int tentative = 1;
     std::string saisieDuSimon;
     int score = 0;
     
@@ -65,32 +76,32 @@ int main(void) {
 	std::cout << "test" << std::endl;*/
 
 
- while(tentative=!0)
- {
+    while(tentative != 0)
+    {
 
-    // Le Simon saisie la liste des couleurs par le Simon 
-    std::cout << "** Jeu du Simon **" << std::endl << std::endl;
-    std::cout << "Simon : " ; //Mettre la liste des couleurs
-    usleep(1000000);
-	std::cout << std::endl << "3... ";
-    usleep(1000000);
-    std::cout << "2... ";
-    usleep(1000000);
-    std::cout << "1... " << std::endl;
-    system("cls");
+        // Le Simon saisie la liste des couleurs par le Simon 
+        std::cout << "** Jeu du Simon **" << std::endl << std::endl;
+        std::cout << "Simon : " ; //Mettre la liste des couleurs
+        usleep(1000000);
+        std::cout << std::endl << "3... ";
+        usleep(1000000);
+        std::cout << "2... ";
+        usleep(1000000);
+        std::cout << "1... " << std::endl;
+        OS::clear();
 
-    // Au tour du joueur 
-    std::cout << "** Jeu du Simon **" << std::endl;
-    std::cout << "[v -> vert, r -> rouge, b -> bleu, j -> jaune]" << std::endl << std::endl;
-    std::cout << "Joueur : ";
-    std::cin >> saisieDuSimon;
+        // Au tour du joueur 
+        std::cout << "** Jeu du Simon **" << std::endl;
+        std::cout << "[v -> vert, r -> rouge, b -> bleu, j -> jaune]" << std::endl << std::endl;
+        std::cout << "Joueur : ";
+        std::cin >> saisieDuSimon;
 
-    // Augmentation du score
-    score++;
-    // Attente entre les 2 interfaces (Simon/joueur)
-    usleep(1000000); 
-    system("cls");
-}
+        // Augmentation du score
+        score++;
+        // Attente entre les 2 interfaces (Simon/joueur)
+        usleep(1000000); 
+        OS::clear();
+    }
 
 
     // INITIALISATION
