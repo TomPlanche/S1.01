@@ -9,7 +9,7 @@
 #include <random>
 #include <unistd.h>
 
-using namespace std;
+
 
 
 int randomTrouveInternet(int borneBasse, int borneHaute)
@@ -33,7 +33,8 @@ int randomTrouveInternet(int borneBasse, int borneHaute)
     }
     return int(distrib(gen));
 }
-  
+
+
 int main(void) {
     /*
         Programme : main
@@ -43,19 +44,19 @@ int main(void) {
         Remarques : pas commencé
     */
     char choixUtilisateur;
-    string choixDisponibles = "pfc";
+    std::string choixDisponibles = "pfc";
     int milliSecondes = 1000;
 
     // TODO : Commencer l'algo
     // ! : Trouver fonction sleep.
 
 
-    std::cout << choixDisponibles[2] << endl;
-    std::cout << choixDisponibles.find('p') << endl;
+    std::cout << choixDisponibles[2] << std::endl;
+    std::cout << choixDisponibles.find('p') << std::endl;
 
     std::cin >> choixUtilisateur;
 
-    std::cout << (string("pfc").find(choixUtilisateur) != 0) << endl;
+    std::cout << (std::string("pfc").find(choixUtilisateur) != 0) << std::endl;
 
 	std::cout << "test" << endl;
 
@@ -63,10 +64,10 @@ int main(void) {
 
 
 	usleep(2000000);
-    cout << "caca ";
+    std::cout << "caca ";
 
 	usleep(2000000);
-    cout << " pipi" << endl;
+    std::cout << " pipi" << endl;
     
 
 
