@@ -58,7 +58,7 @@ int main(void) {
 
     std::cout << (std::string("pfc").find(choixUtilisateur) != 0) << std::endl;
 
-	std::cout << "test" << endl;
+	std::cout << "test" << std::endl;
 
     system("clear");
 
@@ -67,7 +67,7 @@ int main(void) {
     std::cout << "caca ";
 
 	usleep(2000000);
-    std::cout << " pipi" << endl;
+    std::cout << " pipi" << std::endl;
     
 
 
