@@ -19,6 +19,7 @@ namespace OS
 #include <iostream>
 #include <random>
 #include <unistd.h>
+#include <cstdlib>
 
 
 int randomTrouveInternet(int borneBasse, int borneHaute)
