@@ -7,13 +7,13 @@
 
 namespace OS
 {
-  void clear() {
-#ifdef _WIN32
-    system("cls");
-#elif __APPLE__
-    system("clear");
-#endif
-  }
+    void clear() {
+        #ifdef _WIN32
+            system("cls");
+        #elif __APPLE__
+            system("clear");
+        #endif
+    }
 }
 
 #include <iostream>
