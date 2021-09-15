@@ -46,7 +46,9 @@ int main(void) {
    //INITIALISATION
     char choixUtilisateur;
     int tentative=1;
-
+    std::string saisieDuSimon;
+    int score = 0;
+    
     /*std::string choixDisponibles = "vbrj";
     //int milliSecondes = 1000;
 
@@ -62,20 +64,32 @@ int main(void) {
 
 	std::cout << "test" << std::endl;*/
 
-std::cout << "** Jeu du Simon **" << std::endl;
 
- while(tentative=!0){
-    tentative++;
-    std::cout << "[v -> vert, r -> rouge, b -> bleu, j -> jaune]" << std::endl;
-    usleep(3000000);
-    system("cls");
-    std::cout << "** Jeu du Simon **" << std::endl;
+ while(tentative=!0)
+ {
+
+    // Le Simon saisie la liste des couleurs par le Simon 
+    std::cout << "** Jeu du Simon **" << std::endl << std::endl;
+    std::cout << "Simon : " ; //Mettre la liste des couleurs
     usleep(1000000);
-	std::cout << "3... ";
+	std::cout << std::endl << "3... ";
     usleep(1000000);
     std::cout << "2... ";
     usleep(1000000);
     std::cout << "1... " << std::endl;
+    system("cls");
+
+    // Au tour du joueur 
+    std::cout << "** Jeu du Simon **" << std::endl;
+    std::cout << "[v -> vert, r -> rouge, b -> bleu, j -> jaune]" << std::endl << std::endl;
+    std::cout << "Joueur : ";
+    std::cin >> saisieDuSimon;
+
+    // Augmentation du score
+    score++;
+    // Attente entre les 2 interfaces (Simon/joueur)
+    usleep(1000000); 
+    system("cls");
 }
 
 
