@@ -63,12 +63,12 @@ int main(void) {
     system("clear");
 
 
-	usleep(2000000);
-    std::cout << "caca ";
-
-	usleep(2000000);
-    std::cout << " pipi" << std::endl;
-    
+    usleep(2000000);
+	std::cout << "3... ";
+    usleep(2000000);
+    std::cout << "2... ";
+    usleep(2000000);
+    std::cout << "1... " << std::endl;
 
 
 
