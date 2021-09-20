@@ -8,24 +8,35 @@
 
 
 #include <random>
-
-#include "game-tools.h"
 #include <iostream>
+#include <cstdlib>
+
 #ifdef __APPLE__
-#include <unistd.h>
+    #include <unistd.h>
+    #include <stdlib.h>
 #endif
 
 #ifdef _WIN32
-#include <cstdlib>
+    #include "game-tools.h"
 #endif
 
 namespace OS
 {
-    void clear() {
+    void clear()
+    {
         #ifdef _WIN32
             system("cls");
         #elif __APPLE__
             system("clear");
+        #endif
+    }
+
+    void sleep(int secondes)
+    {
+        #ifdef _WIN32
+            _sleep(secondes * 1000); // cette fonction prends des micro-secondes
+        #elif __APPLE__
+            usleep(secondes * 1000000); // cette fonction prends des nano-secondes
         #endif
     }
 }
@@ -54,7 +65,7 @@ int main(void) {
     int perdu=0;
     int scoreOfficiel=0;
     
-  
+
 //Temps qu'on a pas perdu :
     while(tentative = 1)
     {
@@ -64,17 +75,23 @@ int main(void) {
         std::cout << "Simon : " ; 
 
      //Le simon choisie une couleurs entre Vert=1, rouge=2, bleu=3, jaune=4 a rajouter a chaque partie
-        rdm=random(1, 3); //Le rdm bug, il choisit bien entre 1 à 4
+        rdm = random(1, 3); //Le rdm bug, il choisit bien entre 1 à 4
         switch (rdm){
             case 1 : 
-            saisieDuSimon=saisieDuSimon+"v"; break; //Si rdm = 1 => vert
+                saisieDuSimon = saisieDuSimon + "v";
+                break; //Si rdm = 1 => vert
             case 2 :
-            saisieDuSimon=saisieDuSimon+"r"; break;
+                saisieDuSimon = saisieDuSimon + "r";
+                break;
             case 3 :
-            saisieDuSimon=saisieDuSimon+"b"; break;
+                saisieDuSimon = saisieDuSimon + "b";
+                break;
             case 4 : 
-            saisieDuSimon=saisieDuSimon+"j"; break;
-            default : rdm=random(1, 4); break;       //Si il fait de la merde on redemande un nombre
+                saisieDuSimon = saisieDuSimon + "j";
+                break;
+            default :
+                rdm = random(1, 4);
+                break;       //Si il fait de la merde on redemande un nombre
         }
 
 
@@ -82,18 +99,29 @@ int main(void) {
         
         //decomposition de la succession des couleurs pour les affichers avec la couleur correspondante
         //Tant que le mot est pas entierement decomposer, on continue a le decomposer
-        while(boucle<(score+1))
-        {
-             
-        caractere=saisieDuSimon[boucle]; // On prend le caractere de la n'eme(boucle) lettre de la succession de couleur
-        switch (caractere){
-            case 'v' : afficherTexteEnCouleur("v ", vert, false); _sleep(1000);  break; //Si le caractere est vert on affiche v en vert
-            case 'r' : afficherTexteEnCouleur("r ", rouge, false); _sleep(1000); break; //ect...
-            case 'b' : afficherTexteEnCouleur("b ", bleu, false); _sleep(1000); break;
-            case 'j' : afficherTexteEnCouleur("j ", jaune, false); _sleep(1000); break;
-            }
-            boucle++;//On va au n+1'eme caractere (boucle+1)
+        while(boucle < (score + 1)) {
+            caractere=saisieDuSimon[boucle]; // On prend le caractere de la n'eme(boucle) lettre de la succession de couleur
             
+            switch (caractere) {
+                case 'v' :
+                    afficherTexteEnCouleur("v ", vert, false);
+                    OS::sleep(1000);
+                    break; //Si le caractere est vert on affiche v en vert
+                case 'r' :
+                    afficherTexteEnCouleur("r ", rouge, false);
+                    OS::sleep(1000);
+                    break; //ect...
+                case 'b' :
+                    afficherTexteEnCouleur("b ", bleu, false);
+                    OS::sleep(1000);
+                    break;
+                case 'j' :
+                    afficherTexteEnCouleur("j ", jaune, false);
+                    OS::sleep(1000);
+                    break;
+            }
+                boucle++;//On va au n+1'eme caractere (boucle+1)
+                
         }
         // Augmentation du score / rinitialisation des paramettres
         
@@ -101,9 +129,9 @@ int main(void) {
 
         //decompte avant que le joueur saisie la suite des couleurs
         std::cout << std::endl << "3... ";
-        _sleep(1000);
+        OS::sleep(1000);
         std::cout << "2... ";
-        _sleep(1000);
+        OS::sleep(1000);
         std::cout << "1... " << std::endl;
         OS::clear();
 
@@ -187,7 +215,7 @@ int main(void) {
         //Affichage de la fin
         if (perdu==1)
         {
-            _sleep(1000); 
+            OS::sleep(1000); 
             OS::clear();
             cout << "** Jeu du Simon **" << std::endl ;
             cout << "Erreur de la saisie de la couleur " << (scoreOfficiel+1) << endl << endl;
@@ -213,13 +241,13 @@ int main(void) {
             cout << endl << "Vous : " ;
             while(boucle<score)
             {
-             
+
             caractere=saisieDeLutilisateur[boucle]; // On prend le caractere de la n'eme(boucle) lettre de la succession de couleur
             switch (caractere){
-            case 'v' : afficherTexteEnCouleur("v ", vert, false); _sleep(1000);  break; //Si le caractere est vert on affiche v en vert
-            case 'r' : afficherTexteEnCouleur("r ", rouge, false); _sleep(1000); break; //ect...
-            case 'b' : afficherTexteEnCouleur("b ", bleu, false); _sleep(1000); break;
-            case 'j' : afficherTexteEnCouleur("j ", jaune, false); _sleep(1000); break;}
+            case 'v' : afficherTexteEnCouleur("v ", vert, false); OS::sleep(1000);  break; //Si le caractere est vert on affiche v en vert
+            case 'r' : afficherTexteEnCouleur("r ", rouge, false); OS::sleep(1000); break; //ect...
+            case 'b' : afficherTexteEnCouleur("b ", bleu, false); OS::sleep(1000); break;
+            case 'j' : afficherTexteEnCouleur("j ", jaune, false); OS::sleep(1000); break;}
             boucle++;//On va au n+1'eme caractere (boucle+1)
             }
             caractere=0;
@@ -228,7 +256,7 @@ int main(void) {
         }
 
         // Attente entre les 2 interfaces (Simon/joueur)
-        _sleep(1000); 
+        OS::sleep(1000); 
         OS::clear();
         score++;
         saisieDeLutilisateur="";

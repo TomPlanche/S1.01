@@ -67,21 +67,6 @@ int main(void) {
     int tentative = 1;
     std::string saisieDuSimon;
     int score = 0;
-    
-    /*std::string choixDisponibles = "vbrj";
-    //int milliSecondes = 1000;
-
-    // TODO : Commencer l'algo
-
-
-    std::cout << choixDisponibles[2] << std::endl;
-    std::cout << choixDisponibles.find('v') << std::endl;
-
-    std::cin >> choixUtilisateur;
-
-    std::cout << (std::string("pfc").find(choixUtilisateur) != 0) << std::endl;
-
-	std::cout << "test" << std::endl;*/
 
 
     while(tentative != 0)
