@@ -56,7 +56,7 @@ int main(void) {
     
   
 //Temps qu'on a pas perdu :
-    while(tentative = 1)
+    while(tentative == 1)
     {
 
     // Affichage interface Simon
