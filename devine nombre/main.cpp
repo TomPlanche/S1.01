@@ -102,20 +102,12 @@ int main(void)
     std::cout << "----- DEVINE NOMBRE -----" << std::endl;
     std::cout << "Le joueur doit essayer de deviner le nombre généré aléatoirement entre les bornes saisies.\n" << std::endl;
 
-    // Demande à l'utilisateur la saisie de la borne basse.
-    borneBasse = insererNombre("Saisissez la borne basse : ");
-
-    // Idem pour la borne haute.
-    borneHaute = insererNombre("Saisissez la borne haute : ");
-
-    // Si la borne basse est plus grande que la borne haute ou que les deux bornes ont la même valeur
-    while (borneBasse == borneHaute || borneBasse > borneHaute)
-    {
-        std::cout << "Veuillez entrer des valeurs valides (bornes différentes ou borne basse < borne haute)" << std::endl;
+    do {
+        std::cout << "\nVeuillez entrer des valeurs valides (bornes différentes ou borne basse < borne haute)" << std::endl;
 
         borneBasse = insererNombre("Saisissez la borne basse : ");
         borneHaute = insererNombre("Saisissez la borne haute : ");
-    }
+    } while (borneBasse == borneHaute || borneBasse > borneHaute);
 
     // Génère un nombre aléatoire entre les deux bornes choisies
     nb_a_deviner = randomTrouveInternet(borneBasse, borneHaute);
