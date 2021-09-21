@@ -7,9 +7,10 @@
   **/
 
 
-#include <random>
+
 #include <iostream>
 #include <cstdlib>
+#include <random>
 
 #ifdef __APPLE__
     #include <unistd.h>
@@ -41,229 +42,269 @@ namespace OS
     }
 }
 
-
-
-int main(void) {
-    /*
-        Programme : main
-        But :  Lance le jeu
-        Date de dernière modification : 10 septembre 2021
-        Auteur : T. Planche
-        Remarques : pas commencé
-    */
-
-
-   //INITIALISATION
-    char choixUtilisateur;
-    std::string saisieDeLutilisateur;
-    int tentative = 1;
-    std::string saisieDuSimon;
-    int score = 1;
-    int rdm;
+int main()
+{
+    //INITITIALISATION DES VARIABLES
+    bool perdu = false;
+    int short nouvelleCouleurRandom;
+    std::string suiteDesCouleurDuSimon;
+    int numeroDeLaLettre;
+    int nombreDeLettreDansLaSuiteDuSimon;
     char caractere;
-    int boucle=0;
-    int perdu=0;
-    int scoreOfficiel=0;
-    
+    int short tour=0;
+    int nombreDeCouleur=0;
+    std::string suiteDesCouleurDuJoueur;
+    char choixDeLaNouvelleCouleur;
+    int short scoreOfficiel;
+    int ajout=0;
 
-//Temps qu'on a pas perdu :
-    while(tentative == 1)
-    {
 
-    // Affichage interface Simon
+    //Tant que le joueur n'a pas perdu
+    while (perdu == false){
+        
+        //*********************************************************************************************************
+        // Affichage interface Simon
         std::cout << "** Jeu du Simon **" << std::endl << std::endl;
-        std::cout << "Simon : " ; 
+        std::cout << "Simon : " ;
 
-     //Le simon choisie une couleurs entre Vert=1, rouge=2, bleu=3, jaune=4 a rajouter a chaque partie
-        rdm = random(1, 3); //Le rdm bug, il choisit bien entre 1 à 4
-        switch (rdm){
+        //Le Simon choisie une couleurs entre Vert=1, rouge=2, bleu=3, jaune=4 a rajouter a chaque partie
+        nouvelleCouleurRandom = random(1, 3); //Le rdm bug, il choisit bien entre 1 à 4
+        switch (nouvelleCouleurRandom){
             case 1 : 
-                saisieDuSimon = saisieDuSimon + "v";
+                suiteDesCouleurDuSimon = suiteDesCouleurDuSimon + "v";
                 break; //Si rdm = 1 => vert
             case 2 :
-                saisieDuSimon = saisieDuSimon + "r";
+                suiteDesCouleurDuSimon = suiteDesCouleurDuSimon + "r";
                 break;
             case 3 :
-                saisieDuSimon = saisieDuSimon + "b";
+                suiteDesCouleurDuSimon = suiteDesCouleurDuSimon + "b";
                 break;
             case 4 : 
-                saisieDuSimon = saisieDuSimon + "j";
+                suiteDesCouleurDuSimon = suiteDesCouleurDuSimon + "j";
                 break;
             default :
-                rdm = random(1, 4);
-                break;       //Si il fait de la merde on redemande un nombre
+                nouvelleCouleurRandom = random(1, 3);
+                break;       //Si il fait de la merde on redemmande un nombre
         }
 
-
-        //Le simon montre la succession de couleur 
-        
-        //decomposition de la succession des couleurs pour les affichers avec la couleur correspondante
+        //Affichage de toutes les couleurs du simon :
+        //Decomposition de la succession des couleurs pour les affichers avec la couleur correspondante
         //Tant que le mot est pas entierement decomposer, on continue a le decomposer
-        while(boucle < (score + 1)) {
-            caractere=saisieDuSimon[boucle]; // On prend le caractere de la n'eme(boucle) lettre de la succession de couleur
-            
-            switch (caractere) {
+        numeroDeLaLettre=0;
+        tour++;
+        while (numeroDeLaLettre <= tour)
+            {
+                caractere=suiteDesCouleurDuSimon[numeroDeLaLettre];
+                switch (caractere) {
                 case 'v' :
                     afficherTexteEnCouleur("v ", vert, false);
-                    OS::sleep(1000);
+                    _sleep(1000);
                     break; //Si le caractere est vert on affiche v en vert
                 case 'r' :
                     afficherTexteEnCouleur("r ", rouge, false);
-                    OS::sleep(1000);
+                    _sleep(1000);
                     break; //ect...
                 case 'b' :
                     afficherTexteEnCouleur("b ", bleu, false);
-                    OS::sleep(1000);
+                    _sleep(1000);
                     break;
                 case 'j' :
                     afficherTexteEnCouleur("j ", jaune, false);
-                    OS::sleep(1000);
+                    _sleep(1000);
                     break;
+                                }
+                numeroDeLaLettre++;
             }
-                boucle++;//On va au n+1'eme caractere (boucle+1)
-                
-        }
-        // Augmentation du score / rinitialisation des paramettres
-        
-        boucle=0;
-
-        //decompte avant que le joueur saisie la suite des couleurs
-        std::cout << std::endl << "3... ";
-        OS::sleep(1000);
-        std::cout << "2... ";
-        OS::sleep(1000);
-        std::cout << "1... " << std::endl;
-        OS::clear();
-
-
-        // Au tour du joueur 
-        
-        //interface du joueur
-        
-        std::cout << "** Jeu du Simon **" << std::endl;
-        std::cout << "[v -> vert, r -> rouge, b -> bleu, j -> jaune]" << std::endl << std::endl;
-        std::cout << "Joueur : ";
-
-        //Tant que la boucle n'est pas fini
-        while (boucle<score){
             
-
-            //Saisie des couleurs 
-
-            cin >> choixUtilisateur;
-
-
-            //Si la saisie correpond, on continue
-        
-            if (choixUtilisateur==saisieDuSimon[boucle])
-             {
-                scoreOfficiel++;
-                boucle++; 
-                switch (choixUtilisateur){
-                case 'v' : 
-                saisieDeLutilisateur=saisieDeLutilisateur+'v';
-                case 'r' :
-                saisieDeLutilisateur=saisieDeLutilisateur+'r';
-                case 'b' :
-                saisieDeLutilisateur=saisieDeLutilisateur+'b';
-                case 'j' : 
-                saisieDeLutilisateur=saisieDeLutilisateur+'j';
-                 }
-             }
-
-             //sinon fini la boucle, on dit que il a perdu, et on recupere la derniere donné
-            else {boucle=score+1; perdu=1;
-
-                switch (choixUtilisateur){
-                    case 'v' : 
-                    saisieDeLutilisateur=saisieDeLutilisateur+'v'; break; //Si rdm = 1 => vert
-                    case 'r' :
-                    saisieDeLutilisateur=saisieDeLutilisateur+'r'; break;
-                    case 'b' :
-                    saisieDeLutilisateur=saisieDeLutilisateur+'b'; break;
-                    case 'j' : 
-                    saisieDeLutilisateur=saisieDeLutilisateur+'j'; break;
-                        }
-                }
-                }
-           //Peu importe le resultat, on refresh la page pour avoir la saisie en couleur :
+            //decompte avant que le joueur saisie la suite des couleurs
+            std::cout << std::endl << "3... ";
+            _sleep(1000);
+            std::cout << "2... ";
+            _sleep(1000);
+            std::cout << "1... " ;
             OS::clear();
 
-            //interface du joueur
         
+            //Fin de l'interface de jeu du Simon 
+        //*********************************************************************************************************
+
+        //Au tour du joueur
+        
+        
+        //initialisation a chaque debut de partie de la saisie du joueur
+        ajout=0;
+        nombreDeCouleur=0;
+        scoreOfficiel=0;
+
+        //Tant que le joueur n'a pas fini la saisie de toute les couleurs
+        while (nombreDeCouleur != tour)
+        {
+            
+            //On refresh la page avec toutes les dernieres couleurs deja affiché si il y en a
+            OS::clear();
+            //interface du joueur
             std::cout << "** Jeu du Simon **" << std::endl;
             std::cout << "[v -> vert, r -> rouge, b -> bleu, j -> jaune]" << std::endl << std::endl;
             std::cout << "Joueur : ";
             
-            
-            //AFFICHAGE DE LA SAISIE DU JOUEUR
-            boucle=0;
-            while(boucle<score)
-            {
-             
-            caractere=saisieDeLutilisateur[boucle]; // On prend le caractere de la n'eme(boucle) lettre de la succession de couleur
-            switch (caractere){
-            case 'v' : afficherTexteEnCouleur("v ", vert, false);  break; //Si le caractere est vert on affiche v en vert
-            case 'r' : afficherTexteEnCouleur("r ", rouge, false); break; //ect...
-            case 'b' : afficherTexteEnCouleur("b ", bleu, false); break;
-            case 'j' : afficherTexteEnCouleur("j ", jaune, false); break;}
-            boucle++;//On va au n+1'eme caractere (boucle+1)
-            }
+            //On affiche les couleurs deja instauré
+            numeroDeLaLettre=0;
             caractere=0;
-            
-    
-        //Affichage de la fin
-        if (perdu==1)
-        {
-            OS::sleep(1000); 
-            OS::clear();
-            cout << "** Jeu du Simon **" << std::endl ;
-            cout << "Erreur de la saisie de la couleur " << (scoreOfficiel+1) << endl << endl;
-            cout << "Simon : " ;
-            boucle = 0;
-            //AFFICHAGE DE LA SAISIE DU SIMON
-            while(boucle<(score+1))
+            while (numeroDeLaLettre != tour)
             {
-             
-            caractere=saisieDuSimon[boucle]; // On prend le caractere de la n'eme(boucle) lettre de la succession de couleur
-            switch (caractere){
-            case 'v' : afficherTexteEnCouleur("v ", vert, false);  break; //Si le caractere est vert on affiche v en vert
-            case 'r' : afficherTexteEnCouleur("r ", rouge, false); break; //ect...
-            case 'b' : afficherTexteEnCouleur("b ", bleu, false); break;
-            case 'j' : afficherTexteEnCouleur("j ", jaune, false); break;
+                caractere=suiteDesCouleurDuJoueur[numeroDeLaLettre];
+                switch (caractere) {
+                case 'v' :
+                    afficherTexteEnCouleur("v ", vert, false);
+                    _sleep(1000);
+                    break; //Si le caractere est vert on affiche v en vert
+                case 'r' :
+                    afficherTexteEnCouleur("r ", rouge, false);
+                    _sleep(1000);
+                    break; //ect...
+                case 'b' :
+                    afficherTexteEnCouleur("b ", bleu, false);
+                    _sleep(1000);
+                    break;
+                case 'j' :
+                    afficherTexteEnCouleur("j ", jaune, false);
+                    _sleep(1000);
+                    break;
+                                }
+                numeroDeLaLettre++;
+                caractere=0;
             }
-            caractere=0;
-            boucle++;//On va au n+1'eme caractere (boucle+1)
             
-            }
-            boucle=0;
-            //AFFICHAGE DE LA SAISIE DU JOUEUR
-            cout << endl << "Vous : " ;
-            while(boucle<score)
-            {
+        
+            //On demande une nouvelle saisie des couleurs
 
-            caractere=saisieDeLutilisateur[boucle]; // On prend le caractere de la n'eme(boucle) lettre de la succession de couleur
-            switch (caractere){
-            case 'v' : afficherTexteEnCouleur("v ", vert, false); OS::sleep(1000);  break; //Si le caractere est vert on affiche v en vert
-            case 'r' : afficherTexteEnCouleur("r ", rouge, false); OS::sleep(1000); break; //ect...
-            case 'b' : afficherTexteEnCouleur("b ", bleu, false); OS::sleep(1000); break;
-            case 'j' : afficherTexteEnCouleur("j ", jaune, false); OS::sleep(1000); break;}
-            boucle++;//On va au n+1'eme caractere (boucle+1)
+            cin >> choixDeLaNouvelleCouleur;
+
+            //Verification de la saisie, si elle est bonne, on l'implemente dans la suiteDesCouleurDuJoueur
+            //Sinon il a perdu
+            numeroDeLaLettre=ajout;
+            if (choixDeLaNouvelleCouleur==suiteDesCouleurDuSimon[numeroDeLaLettre])
+            {
+                scoreOfficiel++;
+                nombreDeCouleur++;
+                ajout++;
+                switch (choixDeLaNouvelleCouleur){
+                case 'v' : 
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'v';
+                break;
+                case 'r' :
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'r';
+                break;
+                case 'b' :
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'b';
+                break;
+                case 'j' : 
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'j';
+                break;
+            
+                }
+            
+
+            }else { 
+                //On prend la derniere lettre saisie pour l'afficher lors du resultat
+                
+                switch (choixDeLaNouvelleCouleur){
+                case 'v' : 
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'v';
+                break;
+                case 'r' :
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'r';
+                break;
+                case 'b' :
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'b';
+                break;
+                case 'j' : 
+                suiteDesCouleurDuJoueur=suiteDesCouleurDuJoueur+'j';
+                break;
+                default : perdu = true ; break ;
+                }
+                nombreDeCouleur=tour;
+                perdu = true;
             }
-            caractere=0;
-            cout << endl << "Vous avez fait " << scoreOfficiel << " de score.";
-            return 0;
+            
+
+
+
+
+            //fin de la boucle (tant que le joueur n'a pas saisie toute les couleurs
+            
         }
-
-        // Attente entre les 2 interfaces (Simon/joueur)
-        OS::sleep(1000); 
+        suiteDesCouleurDuJoueur="";
         OS::clear();
-        score++;
-        saisieDeLutilisateur="";
-        boucle=0;
-        scoreOfficiel=0;
-    
-
+        
+        //Fin de la boucle (tant que le joueur n'a pas perdu)
+        
     }
+//*********************************************************************************************************
+    //En cas de mauvaise saisie: le joueur a perdu, on affcihe donc le score
 
+OS::clear();
+cout << "** Jeu du Simon **" << std::endl ;
+cout << "Erreur de la saisie de la couleur " << (scoreOfficiel+1) << endl << endl;
+cout << "Simon : " ;
+
+//AFFICHAGE DE LA SAISIE DU SIMON
+numeroDeLaLettre=0;
+
+while (numeroDeLaLettre <= tour)
+    {
+caractere=suiteDesCouleurDuSimon[numeroDeLaLettre];
+switch (caractere) {
+    case 'v' :
+        afficherTexteEnCouleur("v ", vert, false);
+        _sleep(1000);
+    break; //Si le caractere est vert on affiche v en vert
+    case 'r' :
+        afficherTexteEnCouleur("r ", rouge, false);
+        _sleep(1000);
+    break; //ect...
+    case 'b' :
+        afficherTexteEnCouleur("b ", bleu, false);
+        _sleep(1000);
+    break;
+    case 'j' :
+        afficherTexteEnCouleur("j ", jaune, false);
+        _sleep(1000);
+    break;
+        }
+        numeroDeLaLettre++;
+    }
+//*********************************************************************************************************
+//AFFICHAGE DE LA SAISIE DU JOUEUR
+    cout << endl << "Vous : " ;
+    
+    numeroDeLaLettre=0;
+    caractere=0;
+    while (numeroDeLaLettre != tour)
+    {
+    caractere=suiteDesCouleurDuJoueur[numeroDeLaLettre];
+    switch (caractere) {
+        case 'v' :
+            afficherTexteEnCouleur("v ", vert, false);
+            _sleep(1000);
+        break; //Si le caractere est vert on affiche v en vert
+        case 'r' :
+            afficherTexteEnCouleur("r ", rouge, false);
+            _sleep(1000);
+        break; //ect...
+        case 'b' :
+            afficherTexteEnCouleur("b ", bleu, false);
+            _sleep(1000);
+        break;
+        case 'j' :
+            afficherTexteEnCouleur("j ", jaune, false);
+            _sleep(1000);
+        break;
+                                }
+                numeroDeLaLettre++;
+            }
+    cout << "\nVous avez un score de " << scoreOfficiel << ".";
+        
+
+    return 0;
 }
