@@ -307,5 +307,4 @@ switch (caractere) {
         
 
     return 0;
-    //Fin de la fonction int main()
 }
