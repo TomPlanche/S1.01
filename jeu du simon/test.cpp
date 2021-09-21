@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <sstream>
 
+
+
 #ifdef __APPLE__
     #include <unistd.h>
     #include <stdlib.h>
@@ -33,14 +35,44 @@ namespace OS
     }
 }
 
-int main() {
+void afficherTexteCouleur(const char* phraseEntree, char couleur, bool retourALaLigne) {
     std::ostringstream phrase;
     std::string phraseString;
-    const char* phraseChar;
-    std::string phraseIntro = "** Jeu du Simon **\n[v -> vert, r -> rouge, b -> bleu, j -> jaune]";
-    
-    std::cout << phraseIntro << std::endl;
+
+    switch (couleur) {
+        case 'r':
+            phrase << "\x1B[31m" << phraseEntree << "\033[0m";
+            break;
+        
+        case 'v':
+            phrase << "\x1B[32m" << phraseEntree << "\033[0m";
+            break;
+        
+        case 'j':
+            phrase << "\x1B[33m" << phraseEntree << "\033[0m";
+            break;
+        
+        case 'b':
+            phrase << "\x1B[34m" << phraseEntree << "\033[0m";
+            break;
+        
+        default:
+            phrase << phraseEntree;
+    }
+
+    phraseString = phrase.str();
+
+    if (retourALaLigne) {
+        phraseString += "\n";
+    }
+
+    std::cout << phraseString;
+}
 
 
+int main() {
+    afficherTexteCouleur("test", 'r', false);
+    afficherTexteCouleur("test", 'b', true);
+    afficherTexteCouleur("test", 'v', false);
     return 0;
 }
