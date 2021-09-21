@@ -71,8 +71,8 @@ void afficherTexteCouleur(const char* phraseEntree, char couleur, bool retourALa
 
 
 int main() {
-    afficherTexteCouleur("test", 'r', false);
-    afficherTexteCouleur("test", 'b', true);
-    afficherTexteCouleur("test", 'v', false);
+    afficherTexteCouleur("test en rouge", 'r', false);
+    afficherTexteCouleur("test en bleu attaché au rouge", 'b', true);
+    afficherTexteCouleur("test en vert avec saut de ligne", 'v', false);
     return 0;
 }
