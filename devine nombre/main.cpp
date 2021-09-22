@@ -11,6 +11,10 @@
 #include <sstream>
 #include <limits>
 
+using std::cout;
+using std::cin;
+using std::endl;
+
 
 int randomTrouveInternet(int borneBasse, int borneHaute)
 {
@@ -50,15 +54,8 @@ int insererNombre(const char* phrase)
 
     while (true) // Tant que l'input n'est pas bon
     {
-        std::cout << phrase;
-        std::cin >> nombre;
-
-        if (std::cin.fail()) // si aucune extraction n'a eu lieu / erreur saisie
-        {
-            std::cin.clear(); // réinitialise les bits d'état à goodbit pour pouvoir utiliser ignore()
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // efface les mauvaises entrées 
-            continue;
-        }
+        cout << phrase;
+        cin >> nombre;
 
         break;
     }
@@ -99,14 +96,15 @@ int main(void)
 
 
     // Affichage du nom et des règles.
-    std::cout << "----- DEVINE NOMBRE -----" << std::endl;
-    std::cout << "Le joueur doit essayer de deviner le nombre généré aléatoirement entre les bornes saisies.\n" << std::endl;
+    cout << "----- DEVINE NOMBRE -----" << endl;
+    cout << "Le joueur doit essayer de deviner le nombre généré aléatoirement entre les bornes saisies.\n" << endl;
 
     do {
-        std::cout << "\nVeuillez entrer des valeurs valides (bornes différentes ou borne basse < borne haute)" << std::endl;
+        cout << "\nVeuillez entrer des valeurs valides pour les bornes (bornes différentes et borne basse < borne haute)" << endl;
 
         borneBasse = insererNombre("Saisissez la borne basse : ");
         borneHaute = insererNombre("Saisissez la borne haute : ");
+    
     } while (borneBasse == borneHaute || borneBasse > borneHaute);
 
     // Génère un nombre aléatoire entre les deux bornes choisies
@@ -135,19 +133,19 @@ int main(void)
         // Boucle qui vérifie certaines conditions
         if (nbDeTentatives == choixTentatives && tentative != nb_a_deviner) // Si l'utilisateur est a court de tentatives
         {
-            std::cout << "\nPerdu :( le nombre était " << nb_a_deviner << "." << std::endl;
+            cout << "\nPerdu :( le nombre était " << nb_a_deviner << "." << endl;
             return 0;
         } else if (tentative < nb_a_deviner) // Si la tentative est trop petite
         {
-            std::cout << "Nombre trop petit !" << std::endl;
+            cout << "Nombre trop petit !" << endl;
         } else if (tentative > nb_a_deviner)// Si la tentative est trop grande
         {
-            std::cout << "Nombre trop grand !" << std::endl;
+            cout << "Nombre trop grand !" << endl;
         }
 
     }
     // Si on sort de cette boucle c'est que l'utilisateur à trouvé le bon nombre, on le félicite alors
-    std::cout << "\n GAGNÉ ! il vous a fallu " << nbDeTentatives << " tentatives." << std::endl;
+    cout << "\n GAGNÉ ! il vous a fallu " << nbDeTentatives << " tentatives." << endl;
 
     return 0;
 }
