@@ -1,7 +1,10 @@
+// IMPORTS
 #include <random>
 #include <iostream>
 #include <cstdlib>
 #include <sstream>
+
+#include "game-tools.h"
 
 #ifdef __APPLE__
     #include <unistd.h>
@@ -12,10 +15,21 @@
     //#include "game-tools.h"
 #endif
 
+// ESPACE DE NOM
 using std::cout;
 using std::cin;
 using std::endl;
 using std::vector;
+
+// DEFINITIONS
+#define RESET "\e[0m"
+#define ROUGE "\e[0;31m"
+#define VERT "\e[0;32m"
+#define JAUNE "\e[0;33m"
+#define BLEU "\e[0;34m"
+#define VIOLET "\e[0;35m"
+#define CYAN "\e[0;36m"
+#define BLANC "\e[0;37m"
 
 namespace OS
 {
@@ -26,8 +40,6 @@ namespace OS
         #elif __APPLE__
             system("clear");
         #endif
-
-        cout << "** Jeu du Simon **" << endl;
     }
 
     void sleep(int secondes)
@@ -63,13 +75,52 @@ int randomTrouveInternet(int borneBasse, int borneHaute)
     return int(distrib(gen));
 }
 
+string getCodeCouleur (Couleur couleur)
+{
+    string codeCouleur;
+    switch (couleur)
+    {
+    case bleu:
+        codeCouleur = BLEU;
+        break;
+
+    case vert:
+        codeCouleur = VERT;
+        break;
+
+    case cyan:
+        codeCouleur = CYAN;
+        break;
+
+    case rouge:
+        codeCouleur = ROUGE;
+        break;
+
+    case violet:
+        codeCouleur = VIOLET;
+        break;
+
+    case jaune:
+        codeCouleur = JAUNE;
+        break;
+
+    case blanc:
+        codeCouleur = BLANC;
+        break;
+
+    default:
+        codeCouleur = RESET;
+        break;
+    }
+
+    return codeCouleur;
+}
 
 class listeCouleurs {
     public:
         vector<char> liste;
 
         void ajouterCouleur() {
-            cout << "ajouterCouleur Appelée" << endl;
             int i = randomTrouveInternet(1, 4);
             switch(i) {
                 case 1:
@@ -92,51 +143,54 @@ class listeCouleurs {
 
 
 
-void afficherTexteCouleur(const char* phraseEntree, char couleur, bool retourALaLigne) {
-    std::ostringstream phrase;
-    std::string phraseString;
 
-    switch (couleur) {
-        case 'r':
-            phrase << "\x1B[31m" << phraseEntree << "\033[0m";
-            break;
-        
-        case 'v':
-            phrase << "\x1B[32m" << phraseEntree << "\033[0m";
-            break;
-        
-        case 'j':
-            phrase << "\x1B[33m" << phraseEntree << "\033[0m";
-            break;
-        
-        case 'b':
-            phrase << "\x1B[34m" << phraseEntree << "\033[0m";
-            break;
-        
-        default:
-            phrase << phraseEntree;
+void afficherTexteEnCouleur(string chaine, Couleur couleur, bool retourALaLigne)
+{
+    string codeCouleur = getCodeCouleur(couleur);
+    cout << codeCouleur << chaine << RESET << flush;
+    if (retourALaLigne)
+    {
+        cout << endl;
     }
+}
 
-    phraseString = phrase.str();
-
-    if (retourALaLigne) {
-        phraseString += "\n";
+void afficherTexteEnCouleur(char caractere, Couleur couleur, bool retourALaLigne)
+{
+    string codeCouleur = getCodeCouleur(couleur);
+    cout << codeCouleur << caractere << RESET << flush;
+    if (retourALaLigne)
+    {
+        cout << endl;
     }
-
-    cout << phraseString;
 }
 
 
 int main() {
     bool gagne;
-    const char* regles = "[v -> vert, r -> rouge, b -> bleu, j -> jaune]";
+    const char* INTRO_JEU = "** Jeu du Simon **\n";
+    const char* REGLES = "[v -> vert, r -> rouge, b -> bleu, j -> jaune]";
     char couleursGeneres;
-    int nouvelleCouleurRandom;
+    unsigned short int nouvelleCouleurRandom;
     listeCouleurs listeCouleurs;
-    int numeroManche = 0;
+    unsigned short int numeroManche = 0;
+
+    int cpt = 0;
 
 
-    listeCouleurs.ajouterCouleur();
+    while (cpt!=5) {
+        OS::clear();
+        cout << INTRO_JEU;
+        listeCouleurs.ajouterCouleur();
 
+
+        for (int i = 0 ; i < listeCouleurs.liste.size() ; i++) {
+            afficherTexteCouleur(listeCouleurs.liste[i], listeCouleurs.liste[i], false);
+            OS::sleep(1);
+
+        }
+
+        cpt++;
+    }
+    
     return 0;
 }

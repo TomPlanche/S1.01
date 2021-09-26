@@ -4,10 +4,9 @@
  * @brief Fichier d'entête du module game-tools
  * @date 2021-07-12
  */
-#ifndef GAME_TOOLS_H
-#define GAME_TOOLS_H
+# ifndef GAME_TOOLS_H
+# define GAME_TOOLS_H
 
-#include <windows.h> // pour afficher du texte en couleur
 #include <iostream>
 using namespace std;
 
@@ -16,26 +15,7 @@ using namespace std;
  * procedures #afficherTexteEnCouleur et #afficherNombreEnCouleur
  *
  */
-enum Couleur
-{
-    /** La couleur gris a pour code couleur 7*/
-    gris = 7,
-    /** La couleur bleu a pour code couleur 9*/
-    bleu = 9,
-    /** La couleur vert a pour code couleur 10*/
-    vert = 10,
-    /** La couleur cyan a pour code couleur 11*/
-    cyan = 11,
-    /** La couleur rouge a pour code couleur 12*/
-    rouge = 12,
-    /** La couleur violet a pour code couleur 13*/
-    violet = 13,
-    /** La couleur jaune a pour code couleur 14*/
-    jaune = 14,
-    /** La couleur blanc a pour code couleur 15*/
-    blanc = 15
-};
-
+enum Couleur {gris, bleu, vert,  cyan, rouge, violet, jaune, blanc};
 
 /**
  * @brief Permet d'afficher une chaine de caractères en couleur.
@@ -60,6 +40,7 @@ void afficherTexteEnCouleur(string chaine, Couleur couleur, bool retourALaLigne 
  */
 void afficherTexteEnCouleur(char caractere, Couleur couleur, bool retourALaLigne = false);
 
+
 /**
  * @brief Permet d'afficher un nombre en couleur.
  *
@@ -71,6 +52,9 @@ void afficherTexteEnCouleur(char caractere, Couleur couleur, bool retourALaLigne
  */
 void afficherNombreEnCouleur(double nombre, Couleur couleur, bool retourALaLigne = false);
 
+
+
+
 /**
  * @brief Génère un nombre entier aléatoire compris dans un intervalle donné.
  *
@@ -79,6 +63,15 @@ void afficherNombreEnCouleur(double nombre, Couleur couleur, bool retourALaLigne
  * @return int le nombre aléatoire généré.
  */
 int random(int min, int max);
+
+/**
+ * @brief Met en pause l'exécution du programme durant un temps
+ * déterminé ou jusqu'à ce que l'utilisateur appuie sur une touche.
+ *
+ * @param [in] dureeEnSecondes la durée en secondes de la pause. Si ce 
+ * paramètre est égal à 0, le programme s'interrompt jusqu'à ce que
+ * l'utilisateur appuie sur une touche.
+ */
 
 /**
  * @brief Met en pause l'exécution du programme durant un temps
