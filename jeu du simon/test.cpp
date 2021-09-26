@@ -69,15 +69,23 @@ class listeCouleurs {
         vector<char> liste;
 
         void ajouterCouleur() {
-            switch(randomTrouveInternet(1,4)) {
+            cout << "ajouterCouleur Appelée" << endl;
+            int i = randomTrouveInternet(1, 4);
+            switch(i) {
                 case 1:
                     liste.push_back('j');
+                    break;
                 case 2:
                     liste.push_back('r');
+                    break;
                 case 3:
                     liste.push_back('v');
-                default:
+                    break;
+                case 4:
                     liste.push_back('b');
+                    break;
+                default:
+                    break;
             }
         }
 };
@@ -129,11 +137,6 @@ int main() {
 
 
     listeCouleurs.ajouterCouleur();
-
-    for (int i; i < listeCouleurs.liste.size(); i++) {
-        cout << listeCouleurs.liste[i] << endl;
-    }  
-
 
     return 0;
 }
