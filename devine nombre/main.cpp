@@ -10,36 +10,14 @@
 #include <random>
 #include <sstream>
 #include <limits>
+#include "game-tools-linux.h"
 
 using std::cout;
 using std::cin;
 using std::endl;
 
 
-int randomTrouveInternet(int borneBasse, int borneHaute)
-{
-    /**
-      * Programme : randomTrouveInternet
-      * But : Générer un nombre aléatoire entre deux bornes entières. Trouvé sur internet car le random de Patrick Etcheverry ne fonctionne pas
-      * @author Bill Lynch
-      * Date de dernière modification :  08-09-21
-      * Remarques : les deux nombres doivent être des entiers
-      * @param borneBasse entier définissant la borne basse de génération
-      * @param borneHaute entier définissant la borne haute de génération
-      **/
-
-    std::random_device rd; 
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(borneBasse, borneHaute);
-
-    if ((int(distrib(gen))) == 0) { // La variable tentative étant initiée à 0, cela évite que le programme dise que le joueur à gagné sans même jouer.
-        return randomTrouveInternet(borneBasse, borneHaute);
-    }
-    return int(distrib(gen));
-}
-
-
-int insererNombre(const char* phrase)
+int insererNombre(signed short int borneBasse, signed short int borneHaute)
 {
     /**
      *  Programme : insererNombre
@@ -48,13 +26,14 @@ int insererNombre(const char* phrase)
      *  Auteur : T. Planche / M. Hériveau
      *  Remarques : L'utilisateur doit saisir un entier
      *  @param nombre entier demandé à l'utilisateur
-     *  @param phrase phrase à afficher lors de la saisie du nombre
+     *  @param borneBasse entier avec signe - borne basse
+     *  @param borneBasse entier avec signe - borne haute
     **/
-    int nombre;
+    signed short int nombre;
 
     while (true) // Tant que l'input n'est pas bon
     {
-        cout << phrase;
+        cout << "Saisissez un nombre entre " << borneBasse << " et " << borneHaute << " : ";
         cin >> nombre;
 
         break;
@@ -78,21 +57,15 @@ int main(void)
      *  @param nbDeTentatives entier qui sera incrémentéà chaques tentatives
      *  @param tentative entier qui prendra la valeur entrée par l'utilisateur à chaques boucle
      *  @param nb_a_deviner entier qui sera aléatoirement généré entre les bornes choisies
-     *  @param phrase ostringstream qui sert a passer d'un ostringstream généré à chaques boucles à un const char* pour notre fonction insererNombre
-     *  @param phraseString string qui sert a passer d'un string généré à chaques boucles à un const char* pour notre fonction insererNombre
-     *  @param phraseChar const char* qui sera passé dans notre fonction insererNombre
     **/
 
     // INITIALISATION
-    int borneBasse;
-    int borneHaute;
-    int choixTentatives;
-    int nbDeTentatives = 0;
-    int tentative = 0;
-    int nb_a_deviner;
-    std::ostringstream phrase;
-    std::string phraseString;
-    const char* phraseChar;
+    signed short int borneBasse;
+    signed short int borneHaute;
+    signed short int choixTentatives;
+    unsigned short int nbDeTentatives = 0;
+    signed short int tentative = 0;
+    signed short int nb_a_deviner;
 
 
     // Affichage du nom et des règles.
@@ -108,7 +81,7 @@ int main(void)
     } while (borneBasse == borneHaute || borneBasse > borneHaute);
 
     // Génère un nombre aléatoire entre les deux bornes choisies
-    nb_a_deviner = randomTrouveInternet(borneBasse, borneHaute);
+    nb_a_deviner = random(borneBasse, borneHaute);
 
     // Demande à l'utilisateur le nombre de tentatives qu'il souhaite avoir
     choixTentatives = insererNombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
@@ -121,14 +94,8 @@ int main(void)
         // Incrémente le nombre de tentatives à chaques passages de la boucle
         nbDeTentatives++;
 
-        // Ici, je convertis la phrase avec les variables des bornes en char, afin de le passer en argument dans ma fonction "insererNombre".
-        std::ostringstream phrase; // Réinitialisation de la phrase pour chaques boucles
-        phrase << "\nSaisissez un nombre entre " << borneBasse << " et " << borneHaute << ". Tentative n° " << nbDeTentatives << "/" << choixTentatives << " : ";
-        phraseString = phrase.str();
-        phraseChar = phraseString.c_str();
-
         // Demande à l'utilisateur de saisir sa tentative
-        tentative = insererNombre(phraseChar);
+        tentative = insererNombre(borneBasse, borneHaute);
 
         // Boucle qui vérifie certaines conditions
         if (nbDeTentatives == choixTentatives && tentative != nb_a_deviner) // Si l'utilisateur est a court de tentatives
