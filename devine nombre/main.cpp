@@ -10,6 +10,7 @@
 #include <random>
 #include <sstream>
 #include <limits>
+
 using namespace std;
 
 
@@ -68,7 +69,7 @@ int main(void)
     std::cout << "Le joueur doit essayer de deviner le nombre genere aleatoirement entre les bornes saisies.\n" << std::endl;
 
 
-    // SAISIES
+    // -------------------- SAISIES --------------------
     std::cout << "Veuillez entrer des valeurs valides (bornes differentes de 0 ou borne basse < borne haute)" << std::endl;
     
     // clavier >> SaisirIntervalleBasse >> borneBasse
@@ -86,10 +87,10 @@ int main(void)
     do {
         std::cout << "Combien de tentative voulez vous avoir (minimum 1) ? : ";
         std::cin >> nombreDeTentative;
-    } while (nombreDeTentative < 1);
+    } while (nombreDeTentative < 0);
 
     
-    // TRAITEMENT - DÉBUT DU JEU ********************************************************************************************************************************************
+    // -------------------- TRAITEMENT - DÉBUT DU JEU --------------------
 
     // Boucle qui tourne tant que la nombreSaisie de l'utilisateur n'est pas la bonne
     while (nombreSaisie != nbADeviner) {
@@ -114,6 +115,8 @@ int main(void)
     }
     // Si on sort de cette boucle c'est que l'utilisateur à trouvé le bon nombre, on le félicite alors
 
+    // -------------------- AFFICHAGE --------------------
+    
     if (statutJoueur==false) {
         std::cout << "\nF I N I : toutes les tentatives ont ete consommees." << std::endl;  
     } else {
