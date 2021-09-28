@@ -10,7 +10,7 @@
 #include <random>
 #include <sstream>
 #include <limits>
-
+using namespace std;
 
 int randomTrouveInternet(int borneBasse, int borneHaute)
 {
@@ -24,48 +24,16 @@ int randomTrouveInternet(int borneBasse, int borneHaute)
       * @param borneHaute entier définissant la borne haute de génération
       **/
 
-    std::random_device rd; 
+    std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(borneBasse, borneHaute);
 
-    if ((int(distrib(gen))) == 0) { // La variable tentative étant initiée à 0, cela évite que le programme dise que le joueur à gagné sans même jouer.
+    if ((int(distrib(gen))) == 0)
+    { // La variable nombreSaisie étant initiée à 0, cela évite que le programme dise que le joueur à gagné sans même jouer.
         return randomTrouveInternet(borneBasse, borneHaute);
     }
     return int(distrib(gen));
 }
-
-
-int insererNombre(const char* phrase)
-{
-    /**
-     *  Programme : insererNombre
-     *  But :  Demandez, avec une phrase spéciale, à l'utilisateur de saisir un nombre
-     *  Date de dernière modification : 10 septembre 2021
-     *  Auteur : T. Planche / M. Hériveau
-     *  Remarques : L'utilisateur doit saisir un entier
-     *  @param nombre entier demandé à l'utilisateur
-     *  @param phrase phrase à afficher lors de la saisie du nombre
-    **/
-    int nombre;
-
-    while (true) // Tant que l'input n'est pas bon
-    {
-        std::cout << phrase;
-        std::cin >> nombre;
-
-        if (std::cin.fail()) // si aucune extraction n'a eu lieu / erreur saisie
-        {
-            std::cin.clear(); // réinitialise les bits d'état à goodbit pour pouvoir utiliser ignore()
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // efface les mauvaises entrées 
-            continue;
-        }
-
-        break;
-    }
-
-    return nombre;
-}
-
 
 int main(void)
 {
@@ -77,85 +45,85 @@ int main(void)
      *  Remarques : Le programme commence le jeu, le nombre 0 est exclu.
      *  @param borneBasse entier demandé à l'utilisateur définissant la borne basse de la recherche
      *  @param borneHaute entier demandé à l'utilisateur définissant la borne haute de la recherche
-     *  @param choixTentatives entier demandé à l'utilisateur définissant le nombre de tentatives qu'il souhaite avoir
-     *  @param nbDeTentatives entier qui sera incrémentéà chaques tentatives
-     *  @param tentative entier qui prendra la valeur entrée par l'utilisateur à chaques boucle
+     *  @param nombreDeTentative entier demandé à l'utilisateur définissant le nombre de tentatives qu'il souhaite avoir
+     *  @param tentativeActuelle entier qui sera incrémentéà chaques tentatives
+     *  @param nombreSaisie entier qui prendra la valeur entrée par l'utilisateur à chaques boucle
      *  @param nb_a_deviner entier qui sera aléatoirement généré entre les bornes choisies
-     *  @param phrase ostringstream qui sert a passer d'un ostringstream généré à chaques boucles à un const char* pour notre fonction insererNombre
-     *  @param phraseString string qui sert a passer d'un string généré à chaques boucles à un const char* pour notre fonction insererNombre
-     *  @param phraseChar const char* qui sera passé dans notre fonction insererNombre
     **/
 
     // INITIALISATION
     int borneBasse;
     int borneHaute;
-    int choixTentatives;
-    int nbDeTentatives = 0;
-    int tentative = 0;
+    int nombreDeTentative;
+    int tentativeActuelle = 0;
+    int nombreSaisie;
     int nb_a_deviner;
-    std::ostringstream phrase;
-    std::string phraseString;
-    const char* phraseChar;
-
+    bool statutJoueur;
 
     // Affichage du nom et des règles.
     std::cout << "----- DEVINE NOMBRE -----" << std::endl;
-    std::cout << "Le joueur doit essayer de deviner le nombre généré aléatoirement entre les bornes saisies.\n" << std::endl;
+    std::cout << "Le joueur doit essayer de deviner le nombre genere aleatoirement entre les bornes saisies.\n" << std::endl;
 
+    std::cout << "Veuillez entrer des valeurs valides (bornes differentes de 0 ou borne basse < borne haute)" << std::endl;
     // Demande à l'utilisateur la saisie de la borne basse.
-    borneBasse = insererNombre("Saisissez la borne basse : ");
+    std::cout << "Saisissez la borne basse : ";
+    std::cin >> borneBasse;
 
     // Idem pour la borne haute.
-    borneHaute = insererNombre("Saisissez la borne haute : ");
-
-    // Si la borne basse est plus grande que la borne haute ou que les deux bornes ont la même valeur
-    while (borneBasse == borneHaute || borneBasse > borneHaute)
-    {
-        std::cout << "Veuillez entrer des valeurs valides (bornes différentes ou borne basse < borne haute)" << std::endl;
-
-        borneBasse = insererNombre("Saisissez la borne basse : ");
-        borneHaute = insererNombre("Saisissez la borne haute : ");
-    }
+    std::cout << "Saisissez la borne haute : ";
+    std::cin >> borneHaute;
 
     // Génère un nombre aléatoire entre les deux bornes choisies
     nb_a_deviner = randomTrouveInternet(borneBasse, borneHaute);
 
-    // Demande à l'utilisateur le nombre de tentatives qu'il souhaite avoir
-    choixTentatives = insererNombre("\nCombien de vies voulez vous avoir (minimum 1) ? : ");
+    // Demande à l'utilisateur le nombre de nombreSaisies qu'il souhaite avoir
+    do
+    {
+        std::cout << "Combien de tentative voulez vous avoir (minimum 1) ? : ";
+        std::cin >> nombreDeTentative;
+    } while (nombreDeTentative < 1);
 
     // TRAITEMENT - DÉBUT DU JEU
 
-    // Boucle qui tourne tant que la tentative de l'utilisateur n'est pas la bonne
-    while (tentative != nb_a_deviner)
-    {   
+    // Boucle qui tourne tant que la nombreSaisie de l'utilisateur n'est pas la bonne
+    while (nombreSaisie != nb_a_deviner)
+    {
         // Incrémente le nombre de tentatives à chaques passages de la boucle
-        nbDeTentatives++;
+        tentativeActuelle++;
 
-        // Ici, je convertis la phrase avec les variables des bornes en char, afin de le passer en argument dans ma fonction "insererNombre".
-        std::ostringstream phrase; // Réinitialisation de la phrase pour chaques boucles
-        phrase << "\nSaisissez un nombre entre " << borneBasse << " et " << borneHaute << ". Tentative n° " << nbDeTentatives << "/" << choixTentatives << " : ";
-        phraseString = phrase.str();
-        phraseChar = phraseString.c_str();
-
-        // Demande à l'utilisateur de saisir sa tentative
-        tentative = insererNombre(phraseChar);
+        std::cout << "\nSaisissez un nombre entre " << borneBasse << " et " << borneHaute << ". Tentative numero " << tentativeActuelle << "/" << nombreDeTentative << " : ";
+        std::cin >> nombreSaisie;
 
         // Boucle qui vérifie certaines conditions
-        if (nbDeTentatives == choixTentatives && tentative != nb_a_deviner) // Si l'utilisateur est a court de tentatives
+        if (tentativeActuelle == nombreDeTentative && nombreSaisie != nb_a_deviner) // Si l'utilisateur est a court de tentatives
         {
-            std::cout << "\nPerdu :( le nombre était " << nb_a_deviner << "." << std::endl;
-            return 0;
-        } else if (tentative < nb_a_deviner) // Si la tentative est trop petite
+            statutJoueur=false;
+            break;
+        }
+        else if (nombreSaisie < nb_a_deviner) // Si la nombreSaisie est trop petite
         {
             std::cout << "Nombre trop petit !" << std::endl;
-        } else if (tentative > nb_a_deviner)// Si la tentative est trop grande
+        }
+        else if (nombreSaisie > nb_a_deviner) // Si la nombreSaisie est trop grande
         {
             std::cout << "Nombre trop grand !" << std::endl;
         }
-
+        else {
+            statutJoueur=true;
+            break;
+        }
     }
     // Si on sort de cette boucle c'est que l'utilisateur à trouvé le bon nombre, on le félicite alors
-    std::cout << "\n GAGNÉ ! il vous a fallu " << nbDeTentatives << " tentatives." << std::endl;
+
+    if (statutJoueur==false){
+      std::cout << "\nF I N I : toutes les tentatives ont ete consommees." << std::endl;  
+    }
+    else if (statutJoueur==true){
+    std::cout << "\n GAGNE! il vous a fallu " << tentativeActuelle << " tentatives." << std::endl;
+    }
+
+    
 
     return 0;
 }
+
