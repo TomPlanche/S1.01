@@ -10,8 +10,7 @@
 #include <chrono>  // pour la fonction now() utilisée dans la fonction random()
 #include <random>  // pour la fonction random
 
-int random(int min, int max)
-{
+int random(int min, int max) {
     std::default_random_engine generateur;
     std::uniform_int_distribution<int> distributionNombres;
     unsigned int tempsActuel = static_cast<unsigned int>(chrono::steady_clock::now().time_since_epoch().count());

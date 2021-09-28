@@ -28,8 +28,7 @@ int randomTrouveInternet(int borneBasse, int borneHaute)
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(borneBasse, borneHaute);
 
-    if ((int(distrib(gen))) == 0)
-    { // La variable nombreSaisie étant initiée à 0, cela évite que le programme dise que le joueur à gagné sans même jouer.
+    if ((int(distrib(gen))) == 0) { // La variable nombreSaisie étant initiée à 0, cela évite que le programme dise que le joueur à gagné sans même jouer.
         return randomTrouveInternet(borneBasse, borneHaute);
     }
     return int(distrib(gen));
@@ -77,8 +76,7 @@ int main(void)
     nb_a_deviner = randomTrouveInternet(borneBasse, borneHaute);
 
     // Demande à l'utilisateur le nombre de nombreSaisies qu'il souhaite avoir
-    do
-    {
+    do {
         std::cout << "Combien de tentative voulez vous avoir (minimum 1) ? : ";
         std::cin >> nombreDeTentative;
     } while (nombreDeTentative < 1);
@@ -86,8 +84,7 @@ int main(void)
     // TRAITEMENT - DÉBUT DU JEU
 
     // Boucle qui tourne tant que la nombreSaisie de l'utilisateur n'est pas la bonne
-    while (nombreSaisie != nb_a_deviner)
-    {
+    while (nombreSaisie != nb_a_deviner) {
         // Incrémente le nombre de tentatives à chaques passages de la boucle
         tentativeActuelle++;
 
@@ -95,35 +92,25 @@ int main(void)
         std::cin >> nombreSaisie;
 
         // Boucle qui vérifie certaines conditions
-        if (tentativeActuelle == nombreDeTentative && nombreSaisie != nb_a_deviner) // Si l'utilisateur est a court de tentatives
-        {
+        if (tentativeActuelle == nombreDeTentative && nombreSaisie != nb_a_deviner) { // Si l'utilisateur est a court de tentatives
             statutJoueur=false;
             break;
-        }
-        else if (nombreSaisie < nb_a_deviner) // Si la nombreSaisie est trop petite
-        {
+        } else if (nombreSaisie < nb_a_deviner) { // Si la nombreSaisie est trop petite
             std::cout << "Nombre trop petit !" << std::endl;
-        }
-        else if (nombreSaisie > nb_a_deviner) // Si la nombreSaisie est trop grande
-        {
+        } else if (nombreSaisie > nb_a_deviner) { // Si la nombreSaisie est trop grande
             std::cout << "Nombre trop grand !" << std::endl;
-        }
-        else {
+        } else {
             statutJoueur=true;
             break;
         }
     }
     // Si on sort de cette boucle c'est que l'utilisateur à trouvé le bon nombre, on le félicite alors
 
-    if (statutJoueur==false){
-      std::cout << "\nF I N I : toutes les tentatives ont ete consommees." << std::endl;  
+    if (statutJoueur==false) {
+        std::cout << "\nF I N I : toutes les tentatives ont ete consommees." << std::endl;  
+    } else {
+        std::cout << "\n GAGNE! il vous a fallu " << tentativeActuelle << " tentatives." << std::endl;
     }
-    else if (statutJoueur==true){
-    std::cout << "\n GAGNE! il vous a fallu " << tentativeActuelle << " tentatives." << std::endl;
-    }
-
-    
 
     return 0;
 }
-
