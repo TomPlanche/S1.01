@@ -11,7 +11,9 @@
 #include <sstream>
 #include <limits>
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 
 int randomEtcheverry(int min, int max)
@@ -26,7 +28,7 @@ int randomEtcheverry(int min, int max)
     
     std::default_random_engine generateur;
     std::uniform_int_distribution<int> distributionNombres;
-    unsigned int tempsActuel = static_cast<unsigned int>(chrono::steady_clock::now().time_since_epoch().count());
+    unsigned int tempsActuel = static_cast<unsigned int>(std::chrono::steady_clock::now().time_since_epoch().count());
     generateur.seed(tempsActuel);
 
     return ((distributionNombres(generateur) % (max + 1)) + min);
@@ -65,28 +67,28 @@ int main(void)
 
 
     // Affichage du nom et des règles.
-    std::cout << "----- DEVINE NOMBRE -----" << std::endl;
-    std::cout << "Le joueur doit essayer de deviner le nombre genere aleatoirement entre les bornes saisies.\n" << std::endl;
+    cout << "----- DEVINE NOMBRE -----" << std::endl;
+    cout << "Le joueur doit essayer de deviner le nombre genere aleatoirement entre les bornes saisies.\n" << endl;
 
 
     // -------------------- SAISIES --------------------
-    std::cout << "Veuillez entrer des valeurs valides (bornes differentes de 0 ou borne basse < borne haute)" << std::endl;
+    cout << "Veuillez entrer des valeurs valides (bornes differentes de 0 ou borne basse < borne haute)" << endl;
     
     // clavier >> SaisirIntervalleBasse >> borneBasse
-    std::cout << "Saisissez la borne basse : ";
-    std::cin >> borneBasse;
+    cout << "Saisissez la borne basse : ";
+    cin >> borneBasse;
 
     // clavier >> SaisirIntervalleHaute >> borneHaute
-    std::cout << "Saisissez la borne haute : ";
-    std::cin >> borneHaute;
+    cout << "Saisissez la borne haute : ";
+    cin >> borneHaute;
 
     // randomEcheverry >> nbADeviner
     nbADeviner = randomEtcheverry(borneBasse, borneHaute);
 
     // Demande à l'utilisateur le nombre de nombreSaisies qu'il souhaite avoir
     do {
-        std::cout << "Combien de tentative voulez vous avoir (minimum 1) ? : ";
-        std::cin >> nombreDeTentative;
+        cout << "Combien de tentative voulez vous avoir (minimum 1) ? : ";
+        cin >> nombreDeTentative;
     } while (nombreDeTentative < 0);
 
     
@@ -97,17 +99,17 @@ int main(void)
         // Incrémente le nombre de tentatives à chaques passages de la boucle
         tentativeActuelle++;
 
-        std::cout << "\nSaisissez un nombre entre " << borneBasse << " et " << borneHaute << ". Tentative numero " << tentativeActuelle << "/" << nombreDeTentative << " : ";
-        std::cin >> nombreSaisie;
+        cout << "\nSaisissez un nombre entre " << borneBasse << " et " << borneHaute << ". Tentative numero " << tentativeActuelle << "/" << nombreDeTentative << " : ";
+        cin >> nombreSaisie;
 
         // Boucle qui vérifie certaines conditions
         if (tentativeActuelle == nombreDeTentative && nombreSaisie != nbADeviner) { // Si l'utilisateur est a court de tentatives
             statutJoueur=false;
             break;
         } else if (nombreSaisie < nbADeviner) { // Si la nombreSaisie est trop petite
-            std::cout << "Nombre trop petit !" << std::endl;
+            cout << "Nombre trop petit !" << endl;
         } else if (nombreSaisie > nbADeviner) { // Si la nombreSaisie est trop grande
-            std::cout << "Nombre trop grand !" << std::endl;
+            cout << "Nombre trop grand !" << endl;
         } else {
             statutJoueur=true;
             break;
@@ -118,9 +120,9 @@ int main(void)
     // -------------------- AFFICHAGE --------------------
     
     if (statutJoueur==false) {
-        std::cout << "\nF I N I : toutes les tentatives ont ete consommees." << std::endl;  
+        cout << "\nF I N I : toutes les tentatives ont ete consommees." << endl;  
     } else {
-        std::cout << "\n GAGNÉ! il vous a fallu " << tentativeActuelle << " tentatives." << std::endl;
+        cout << "\n GAGNÉ! il vous a fallu " << tentativeActuelle << " tentatives." << endl;
     }
 
     return 0;
